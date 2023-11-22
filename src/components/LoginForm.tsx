@@ -1,7 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_MUTATION } from "../graphql/loginMutation";
+import {
+  LOGIN_MUTATION,
+  LoginJwtMutationResponse,
+} from "../graphql/loginMutation";
 import {
   FormContainer,
   Input,
@@ -14,7 +17,7 @@ const LoginForm = () => {
   const [emailError, setEmailError] = useState<string>();
   const [password, setPassword] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>();
-  const [loginMutation] = useMutation(LOGIN_MUTATION);
+  const [loginMutation] = useMutation<LoginJwtMutationResponse>(LOGIN_MUTATION);
   const [loginError, setLoginError] = useState<string>("");
   // const [isLoading, setIsLoading] = useState<Boolean>();
   const navigate = useNavigate();
@@ -58,8 +61,8 @@ const LoginForm = () => {
       const { data: userData } = await loginMutation({
         variables: { input: { email, password } },
       });
-      const token = userData.Auth.loginJwt.jwtTokens.accessToken;
-      localStorage.setItem("token", token);
+      const token = userData?.Auth.loginJwt.jwtTokens.accessToken;
+      token && localStorage.setItem("token", token);
       navigate("/overview");
     } catch (userLoginError) {
       setLoginError("Incorrect Email or password");
@@ -70,7 +73,7 @@ const LoginForm = () => {
       <form onSubmit={(e) => handleLogin(e)} noValidate>
         <div>
           <Input
-            id={email}
+            id={"email"}
             type="email"
             value={email}
             onChange={(e) => {
@@ -79,7 +82,7 @@ const LoginForm = () => {
             required
             placeholder="Enter your email"
           />
-          <label htmlFor={email}>
+          <label htmlFor={"email"}>
             {" "}
             {emailError !== undefined ? (
               <ValidationErrorText>{emailError}</ValidationErrorText>
@@ -88,7 +91,7 @@ const LoginForm = () => {
         </div>
         <br />
         <Input
-          id={password}
+          id={"password"}
           type="password"
           value={password}
           onChange={(e) => {
@@ -97,7 +100,7 @@ const LoginForm = () => {
           required
           placeholder="Enter your password"
         />
-        <label htmlFor={password}>
+        <label htmlFor={"password"}>
           {" "}
           {passwordError ? (
             <ValidationErrorText>{passwordError}</ValidationErrorText>
