@@ -1,25 +1,21 @@
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
-
-const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.primary};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
+import LoginPage from "./pages/LoginPage";
+import OverviewPage from "./pages/OverviewPage";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Container>
-        <header data-testid="header">
-          <p>Test App</p>
-        </header>
-      </Container>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/overview" element={<OverviewPage />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
