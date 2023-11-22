@@ -2,7 +2,7 @@ import LoginForm from "../components/LoginForm";
 import Welcome from "../components/Welcome";
 import { PageContainer } from "./PageStyles";
 
-const LoginPage = () => (
+const LoginPage: React.FC = () => (
   <PageContainer>
     <Welcome />
     <LoginForm />

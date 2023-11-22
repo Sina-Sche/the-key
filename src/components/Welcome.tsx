@@ -1,6 +1,6 @@
 import AcademyIcon from "../assets/AcademyIcon";
 
-const Welcome = () => {
+const Welcome: React.FC = () => {
   return (
     <>
       <header data-testid="header">
