@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "func-names": "off",
+    "no-process-exit": "off",
+    "object-shorthand": "off",
+    "react/function-component-definition": "off",
+    "exhaustive-deps": "off",
+    "testing-library/prefer-screen-queries": "off"
+  },
+  "include": ["src/**/*.ts", "src/**/*.js", "test/**/*.ts"]
+}
