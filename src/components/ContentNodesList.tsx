@@ -5,7 +5,7 @@ import {
   ContentNodesResponse,
 } from "../graphql/getContentNodes";
 import placeholderImage from "../assets/placeholder.png";
-import { Img, ListElement, Title } from "./ContentNodesListStyles";
+import { Img, List, ListElement, Title } from "./ContentNodesListStyles";
 import { User } from "../types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -24,25 +24,19 @@ const ContentNodesList: React.FC<User> = ({ token }) => {
   if (error) return <p>Error: {error.message}</p>;
   const nodes: ContentNode[] | undefined =
     data?.Admin.Tree.GetContentNodes.edges.map((edge: any) => edge.node);
-
   return (
-    <ul>
+    <List>
       {nodes?.map((node: any) => (
         <ListElement key={uuidv4()}>
           <Title>{node.structureDefinition.title}</Title>
           {node.image ? (
-            <Img
-              src={node.image}
-              alt="lesson"
-              height={"30vh"}
-              width={"100px"}
-            />
+            <Img src={node.image.url} alt="lesson" />
           ) : (
             <Img src={placeholderImage} alt="lesson" />
           )}
         </ListElement>
       ))}
-    </ul>
+    </List>
   );
 };
 

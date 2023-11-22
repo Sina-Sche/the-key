@@ -5,6 +5,8 @@ export interface Theme {
     text: string;
     background: string;
     hover: string;
+    accent: string;
+    hoverAccent: string;
   };
   font: {
     fontSize: {
@@ -19,6 +21,11 @@ export interface Theme {
     medium: string;
     large: string;
   };
+  breakpoints: {
+    small: string;
+    medium: string;
+    large: string;
+  };
 }
 
 const theme: Theme = {
@@ -28,6 +35,8 @@ const theme: Theme = {
     text: "white",
     background: "green",
     hover: "#13568a",
+    accent: "#ff5858",
+    hoverAccent: "#d63939",
   },
   font: {
     fontSize: {
@@ -41,6 +50,11 @@ const theme: Theme = {
     small: "10px",
     medium: "15px",
     large: "20px",
+  },
+  breakpoints: {
+    small: "480px",
+    medium: "768px",
+    large: "1024px",
   },
 };
 
