@@ -21,18 +21,22 @@ const ContentNodesList: React.FC<User> = ({ token }) => {
     }
   );
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) {
+    console.error(error);
+    return <p>Sorry, something went wrong</p>;
+  }
   const nodes: ContentNode[] | undefined =
     data?.Admin.Tree.GetContentNodes.edges.map((edge: any) => edge.node);
+
   return (
     <List>
       {nodes?.map((node: any) => (
         <ListElement key={uuidv4()}>
           <Title>{node.structureDefinition.title}</Title>
           {node.image ? (
-            <Img src={node.image.url} alt="lesson" />
+            <Img src={node.image.url} alt="lesson" loading="lazy" />
           ) : (
-            <Img src={placeholderImage} alt="lesson" />
+            <Img src={placeholderImage} alt="lesson" loading="lazy" />
           )}
         </ListElement>
       ))}

@@ -9,7 +9,11 @@ const LogoutButton = () => {
     navigate("/");
   };
   return (
-    <Button type="button" onClick={() => handleLogout()}>
+    <Button
+      type="button"
+      onClick={() => handleLogout()}
+      data-testid="logoutButton"
+    >
       Logout
     </Button>
   );

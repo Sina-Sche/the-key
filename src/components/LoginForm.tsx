@@ -17,36 +17,54 @@ const LoginForm = () => {
   const [emailError, setEmailError] = useState<string>();
   const [password, setPassword] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>();
-  const [loginMutation] = useMutation<LoginJwtMutationResponse>(LOGIN_MUTATION);
+  const [loginMutation, { loading }] =
+    useMutation<LoginJwtMutationResponse>(LOGIN_MUTATION);
   const [loginError, setLoginError] = useState<string>("");
   // const [isLoading, setIsLoading] = useState<Boolean>();
   const navigate = useNavigate();
+
+  const setError = (field: string, message: string) => {
+    switch (field) {
+      case "email":
+        setEmailError(message);
+        break;
+      case "password":
+        setPasswordError(message);
+        break;
+      case "login":
+        setLoginError(message);
+        break;
+      default:
+        // Handle unexpected errors
+        setLoginError("Something went wrong. Please try again.");
+    }
+  };
 
   // const debouncedEmail = useDebounce(email, 200);
   // const debouncedPassword = useDebounce(password, 200);
 
   const checkEmailValidity = useCallback(() => {
     if (email === "") {
-      setEmailError("Please enter your email.");
+      setError("email", "Please enter your email.");
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setEmailError("Please enter a valid email.");
+      setError("email", "Please enter a valid email.");
       return;
     }
-    setEmailError("");
+    setError("email", "");
   }, [email]);
 
   const checkPasswordValidity = useCallback(() => {
     if (password === "") {
-      setPasswordError("Please enter a password");
+      setError("password", "Please enter a password");
       return;
     }
     if (password.length < 8) {
-      setPasswordError("Your password should have at least 8 characters.");
+      setError("password", "Your password should have at least 8 characters.");
       return;
     }
-    setPasswordError("");
+    setError("password", "");
   }, [password]);
 
   const handleLogin = async (
@@ -62,10 +80,14 @@ const LoginForm = () => {
         variables: { input: { email, password } },
       });
       const token = userData?.Auth.loginJwt.jwtTokens.accessToken;
-      token && localStorage.setItem("token", token);
-      navigate("/overview");
+      if (token) {
+        localStorage.setItem("token", token);
+        navigate("/overview");
+      } else {
+        setError("Login", "Something went wrong. Please try again.");
+      }
     } catch (userLoginError) {
-      setLoginError("Incorrect Email or password");
+      setError("Login", "Incorrect Email or password.");
     }
   };
   return (
@@ -107,6 +129,7 @@ const LoginForm = () => {
           ) : null}
         </label>
         <br />
+        {loading && <p>Loading...</p>}
         <LoginButton type="submit">Login</LoginButton>
         {loginError ? (
           <ValidationErrorText>{loginError}</ValidationErrorText>
