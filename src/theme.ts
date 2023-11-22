@@ -4,6 +4,7 @@ export interface Theme {
     secondary: string;
     text: string;
     background: string;
+    hover: string;
   };
   font: {
     fontSize: {
@@ -13,22 +14,33 @@ export interface Theme {
     };
     fontFamily: string;
   };
+  spacing: {
+    small: string;
+    medium: string;
+    large: string;
+  };
 }
 
 const theme: Theme = {
   colors: {
     primary: "black",
-    secondary: "lightcoral",
+    secondary: "#247ac7",
     text: "white",
     background: "green",
+    hover: "#13568a",
   },
   font: {
     fontSize: {
-      small: "5px",
+      small: "12px",
       standard: "16px",
       large: "20px",
     },
-    fontFamily: "Arial",
+    fontFamily: "Verdana",
+  },
+  spacing: {
+    small: "10px",
+    medium: "15px",
+    large: "20px",
   },
 };
 

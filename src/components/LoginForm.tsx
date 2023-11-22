@@ -1,45 +1,50 @@
 import { useMutation } from "@apollo/client";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useDebounce from "../utils/useDebounce";
 import { LOGIN_MUTATION } from "../graphql/loginMutation";
-import { Input, LoginButton, ValidationErrorText } from "./LoginFormStyles";
+import {
+  FormContainer,
+  Input,
+  LoginButton,
+  ValidationErrorText,
+} from "./LoginFormStyles";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [loginError, setLoginError] = useState<string>("");
   const [emailError, setEmailError] = useState<string>();
+  const [password, setPassword] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>();
   const [loginMutation] = useMutation(LOGIN_MUTATION);
+  const [loginError, setLoginError] = useState<string>("");
+  // const [isLoading, setIsLoading] = useState<Boolean>();
   const navigate = useNavigate();
 
-  const debouncedEmail = useDebounce(email, 400);
-  const debouncedPassword = useDebounce(password, 400);
+  // const debouncedEmail = useDebounce(email, 200);
+  // const debouncedPassword = useDebounce(password, 200);
 
   const checkEmailValidity = useCallback(() => {
-    if (debouncedEmail === "") {
+    if (email === "") {
       setEmailError("Please enter your email.");
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(debouncedEmail)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailError("Please enter a valid email.");
       return;
     }
     setEmailError("");
-  }, [debouncedEmail]);
+  }, [email]);
 
   const checkPasswordValidity = useCallback(() => {
-    if (debouncedPassword === "") {
+    if (password === "") {
       setPasswordError("Please enter a password");
       return;
     }
-    if (debouncedPassword.length < 8) {
+    if (password.length < 8) {
       setPasswordError("Your password should have at least 8 characters.");
       return;
     }
     setPasswordError("");
-  }, [debouncedPassword]);
+  }, [password]);
 
   const handleLogin = async (
     e:
@@ -61,7 +66,7 @@ const LoginForm = () => {
     }
   };
   return (
-    <>
+    <FormContainer>
       <form onSubmit={(e) => handleLogin(e)} noValidate>
         <div>
           <Input
@@ -104,7 +109,7 @@ const LoginForm = () => {
           <ValidationErrorText>{loginError}</ValidationErrorText>
         ) : null}
       </form>
-    </>
+    </FormContainer>
   );
 };
 export default LoginForm;

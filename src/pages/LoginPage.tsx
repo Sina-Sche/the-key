@@ -1,19 +1,12 @@
-import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import Welcome from "../components/Welcome";
+import { PageContainer } from "./PageStyles";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
 const LoginPage = () => (
-  <Container>
+  <PageContainer>
     <Welcome />
     <LoginForm />
-  </Container>
+  </PageContainer>
 );
 
 export default LoginPage;

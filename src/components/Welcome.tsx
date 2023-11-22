@@ -1,10 +1,13 @@
+import AcademyIcon from "../assets/AcademyIcon";
+
 const Welcome = () => {
   return (
     <>
       <header data-testid="header">
-        <p>Welcome</p>
-        <p>This will be the LoginPage</p>
+        <AcademyIcon />
       </header>
+      <p>Welcome</p>
+      <p>Please login to continue</p>
     </>
   );
 };
