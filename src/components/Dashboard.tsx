@@ -21,7 +21,7 @@ const Dashboard = () => {
   const userName = data?.Viewer.Auth.currentUser.user.name;
   return (
     <DashboardContainer>
-      <h3>Hey {userName},</h3>
+      <h3 data-testid="greeting">Hey {userName},</h3>
       <SmallText>
         Nice to see you here! Let's get you started with your next lessons:{" "}
       </SmallText>

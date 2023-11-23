@@ -8,7 +8,7 @@ import { MockedProvider } from "@apollo/client/testing";
 test("renders LogoutButton", () => {
   render(
     <MemoryRouter>
-      <MockedProvider>
+      <MockedProvider addTypename={false}>
         <ThemeProvider theme={theme}>
           <OverviewPage />
         </ThemeProvider>

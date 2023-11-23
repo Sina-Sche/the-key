@@ -28,7 +28,7 @@ const LoginForm = () => {
   return (
     <FormContainer>
       {loading && (
-        <LoadingOverlay>
+        <LoadingOverlay data-testid="loadingOverlay">
           <LoadingSpinner />
         </LoadingOverlay>
       )}
@@ -55,7 +55,7 @@ const LoginForm = () => {
           error={passwordError}
         />
         <br />
-        <LoginButton type="submit" id="login">
+        <LoginButton type="submit" id="login" data-testid="loginButton">
           Login
         </LoginButton>
         {loginError ? (
