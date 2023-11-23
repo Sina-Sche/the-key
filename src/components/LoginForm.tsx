@@ -1,98 +1,33 @@
-import { useMutation } from "@apollo/client";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  LOGIN_MUTATION,
-  LoginJwtMutationResponse,
-} from "../graphql/loginMutation";
 import {
   FormContainer,
   Input,
   LoginButton,
   ValidationErrorText,
 } from "./LoginFormStyles";
+import { useAuth } from "../utils/useAuth";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
-  const [emailError, setEmailError] = useState<string>();
   const [password, setPassword] = useState<string>("");
-  const [passwordError, setPasswordError] = useState<string>();
-  const [loginMutation, { loading }] =
-    useMutation<LoginJwtMutationResponse>(LOGIN_MUTATION);
-  const [loginError, setLoginError] = useState<string>("");
-  // const [isLoading, setIsLoading] = useState<Boolean>();
+  const {
+    handleLogin,
+    emailError,
+    passwordError,
+    loginError,
+    loading,
+    loginSuccessful,
+  } = useAuth();
+
   const navigate = useNavigate();
-
-  const setError = (field: string, message: string) => {
-    switch (field) {
-      case "email":
-        setEmailError(message);
-        break;
-      case "password":
-        setPasswordError(message);
-        break;
-      case "login":
-        setLoginError(message);
-        break;
-      default:
-        // Handle unexpected errors
-        setLoginError("Something went wrong. Please try again.");
-    }
-  };
-
+  if (loginSuccessful) navigate("/overview");
   // const debouncedEmail = useDebounce(email, 200);
   // const debouncedPassword = useDebounce(password, 200);
 
-  const checkEmailValidity = useCallback(() => {
-    if (email === "") {
-      setError("email", "Please enter your email.");
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("email", "Please enter a valid email.");
-      return;
-    }
-    setError("email", "");
-  }, [email]);
-
-  const checkPasswordValidity = useCallback(() => {
-    if (password === "") {
-      setError("password", "Please enter a password");
-      return;
-    }
-    if (password.length < 8) {
-      setError("password", "Your password should have at least 8 characters.");
-      return;
-    }
-    setError("password", "");
-  }, [password]);
-
-  const handleLogin = async (
-    e:
-      | React.MouseEvent<HTMLButtonElement, MouseEvent>
-      | React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
-    checkEmailValidity();
-    checkPasswordValidity();
-    try {
-      const { data: userData } = await loginMutation({
-        variables: { input: { email, password } },
-      });
-      const token = userData?.Auth.loginJwt.jwtTokens.accessToken;
-      if (token) {
-        localStorage.setItem("token", token);
-        navigate("/overview");
-      } else {
-        setError("Login", "Something went wrong. Please try again.");
-      }
-    } catch (userLoginError) {
-      setError("Login", "Incorrect Email or password.");
-    }
-  };
   return (
     <FormContainer>
-      <form onSubmit={(e) => handleLogin(e)} noValidate>
+      <form onSubmit={(e) => handleLogin(e, email, password)} noValidate>
         <div>
           <Input
             id={"email"}
