@@ -6,7 +6,7 @@ import { DashboardContainer, SmallText } from "./DashboardStyles";
 const Dashboard = () => {
   const token = localStorage.getItem("token");
 
-  const { loading, error, data } = useQuery<UserResponse>(GET_USER, {
+  const { loading, data, error } = useQuery<UserResponse>(GET_USER, {
     context: {
       headers: {
         Authorization: `Bearer ${token}`,

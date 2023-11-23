@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormContainer, Input, LoginButton } from "./LoginFormStyles";
+import { FormContainer, LoginButton } from "./LoginFormStyles";
 import { useAuth } from "../utils/useAuth";
 import ValidationError from "./ValidationError";
 import InputField from "./InputField";
+import { LoadingOverlay, LoadingSpinner } from "./LoadingOverlay";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
@@ -26,6 +27,11 @@ const LoginForm = () => {
 
   return (
     <FormContainer>
+      {loading && (
+        <LoadingOverlay>
+          <LoadingSpinner />
+        </LoadingOverlay>
+      )}
       <form onSubmit={(e) => handleLogin(e, email, password)} noValidate>
         <InputField
           id={"email"}
@@ -49,7 +55,6 @@ const LoginForm = () => {
           error={passwordError}
         />
         <br />
-        {loading && <p>Loading...</p>}
         <LoginButton type="submit" id="login">
           Login
         </LoginButton>

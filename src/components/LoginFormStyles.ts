@@ -12,7 +12,7 @@ export const FormContainer = styled.div`
 export const Input = styled.input`
   padding: ${(props) => props.theme.spacing.small};
   margin-bottom: ${(props) => props.theme.spacing.medium};
-  width: 250px;
+  width: 300px;
   border: none;
   border-radius: 5px;
   box-sizing: border-box;

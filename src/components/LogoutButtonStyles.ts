@@ -12,6 +12,9 @@ export const Button = styled.button`
   &:hover {
     background-color: ${(props) => props.theme.colors.hoverAccent};
   }
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.medium}) {
+    display: none;
+  }
 `;
 
 export const IconButton = styled.button`
