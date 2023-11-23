@@ -1,11 +1,11 @@
-import AcademyIcon from "../assets/icons/AcademyIcon";
-import { LoginContainer } from "./WelcomeStyles";
+import { Headline, Img, LoginContainer } from "./WelcomeStyles";
+import welcome from "../assets/placeholder.png";
 
 const Welcome: React.FC = () => {
   return (
     <LoginContainer data-testid="welcome">
-      <AcademyIcon />
-      <p>Welcome</p>
+      <Img src={welcome} alt="woman on chair" />
+      <Headline>Welcome</Headline>
       <p>Please login to continue</p>
     </LoginContainer>
   );

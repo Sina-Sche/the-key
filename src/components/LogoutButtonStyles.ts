@@ -8,9 +8,17 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin: ${(props) => props.theme.spacing.large}
 
   &:hover {
     background-color: ${(props) => props.theme.colors.hoverAccent};
+  }
+`;
+
+export const IconButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.medium}) {
+    display: none;
   }
 `;

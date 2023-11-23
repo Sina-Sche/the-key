@@ -12,10 +12,11 @@ export const FormContainer = styled.div`
 export const Input = styled.input`
   padding: ${(props) => props.theme.spacing.small};
   margin-bottom: ${(props) => props.theme.spacing.medium};
-  width: 100%;
-  border: 1px solid #ccc;
+  width: 250px;
+  border: none;
   border-radius: 5px;
   box-sizing: border-box;
+  height: 45px;
 `;
 
 export const ValidationErrorText = styled.p`

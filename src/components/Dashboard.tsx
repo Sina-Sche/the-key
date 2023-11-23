@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_USER, UserResponse } from "../graphql/getUser";
 import { AuthError } from "./AuthError";
+import { DashboardContainer, SmallText } from "./DashboardStyles";
 
 const Dashboard = () => {
   const token = localStorage.getItem("token");
@@ -19,10 +20,12 @@ const Dashboard = () => {
 
   const userName = data?.Viewer.Auth.currentUser.user.name;
   return (
-    <>
-      <h4>Hey {userName}</h4>
-      <p>Here are your next lessons </p>
-    </>
+    <DashboardContainer>
+      <h3>Hey {userName},</h3>
+      <SmallText>
+        Nice to see you here! Let's get you started with your next lessons:{" "}
+      </SmallText>
+    </DashboardContainer>
   );
 };
 
