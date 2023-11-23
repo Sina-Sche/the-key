@@ -1,5 +1,6 @@
 const AcademyIcon = () => (
   <svg
+    data-testid="icon"
     width="150px"
     height="150px"
     viewBox="0 0 20 20"

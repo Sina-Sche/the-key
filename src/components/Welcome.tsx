@@ -1,14 +1,13 @@
-import AcademyIcon from "../assets/AcademyIcon";
+import AcademyIcon from "../assets/icons/AcademyIcon";
+import { LoginContainer } from "./WelcomeStyles";
 
 const Welcome: React.FC = () => {
   return (
-    <>
-      <header data-testid="header">
-        <AcademyIcon />
-      </header>
+    <LoginContainer data-testid="welcome">
+      <AcademyIcon />
       <p>Welcome</p>
       <p>Please login to continue</p>
-    </>
+    </LoginContainer>
   );
 };
 

@@ -3,7 +3,7 @@ import Welcome from "../components/Welcome";
 import { PageContainer } from "./PageStyles";
 
 const LoginPage: React.FC = () => (
-  <PageContainer>
+  <PageContainer data-testid="login">
     <Welcome />
     <LoginForm />
   </PageContainer>

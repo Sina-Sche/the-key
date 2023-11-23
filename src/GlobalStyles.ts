@@ -11,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.colors.text};
     background-color: ${(props) => props.theme.colors.primary};
   }
+  ul {
+    list-style: none;
+  }
 `;
 
 export default GlobalStyles;
