@@ -3,11 +3,13 @@ export interface Theme {
     primary: string;
     secondary: string;
     text: string;
+    textDark: string;
     background: string;
     hover: string;
     accent: string;
     hoverAccent: string;
   };
+  gradient: string;
   font: {
     fontSize: {
       small: string;
@@ -20,6 +22,7 @@ export interface Theme {
     small: string;
     medium: string;
     large: string;
+    xlarge: string;
   };
   breakpoints: {
     small: string;
@@ -30,14 +33,16 @@ export interface Theme {
 
 const theme: Theme = {
   colors: {
-    primary: "black",
+    primary: "#f3f5f8",
     secondary: "#247ac7",
     text: "white",
+    textDark: "black",
     background: "green",
     hover: "#13568a",
     accent: "#ff5858",
     hoverAccent: "#d63939",
   },
+  gradient: "linear-gradient(270deg,#dcf8e7,#a7cbe8)",
   font: {
     fontSize: {
       small: "12px",
@@ -50,6 +55,7 @@ const theme: Theme = {
     small: "10px",
     medium: "15px",
     large: "20px",
+    xlarge: "30px",
   },
   breakpoints: {
     small: "480px",

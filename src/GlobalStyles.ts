@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  body, h1, h2, h3, p, ul, li {
+  body, ul, li {
     margin: 0;
     padding: 0;
   }
@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${(props) => props.theme.font.fontFamily};
     font-size: ${(props) => props.theme.font.fontSize.standard};
     color: ${(props) => props.theme.colors.text};
-    background-color: ${(props) => props.theme.colors.primary};
+    background-image: ${(props) => props.theme.gradient};
   }
   ul {
     list-style: none;
