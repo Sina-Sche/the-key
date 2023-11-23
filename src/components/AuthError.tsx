@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ErrorIcon from "../assets/ErrorIcon";
+import ErrorIcon from "../assets/icons/ErrorIcon";
 import { LoginContainer } from "./WelcomeStyles";
 import { LoginButton } from "./LoginFormStyles";
 

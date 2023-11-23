@@ -1,5 +1,4 @@
 import { ThemeProvider } from "styled-components";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";

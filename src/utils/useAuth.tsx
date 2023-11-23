@@ -40,11 +40,9 @@ const AuthContext = createContext<AuthContextProps>({
 });
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user] = useState(null);
   const [loginError, setLoginError] = useState(null);
-  const [email, setEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string>();
-  const [password, setPassword] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>();
   const [loginSuccessful, setLoginSuccessful] = useState<Boolean>(false);
   const [loginMutation, { loading }] =
@@ -61,12 +59,10 @@ const AuthProvider = ({ children }) => {
       case "login":
         setLoginError(message);
         break;
-      default:
-        setLoginError("Something went wrong. Please try again.");
     }
   };
 
-  const checkEmailValidity = useCallback(() => {
+  const checkEmailValidity = useCallback((email: string) => {
     if (email === "") {
       setError("email", "Please enter your email.");
       return;
@@ -76,9 +72,9 @@ const AuthProvider = ({ children }) => {
       return;
     }
     setError("email", "");
-  }, [email]);
+  }, []);
 
-  const checkPasswordValidity = useCallback(() => {
+  const checkPasswordValidity = useCallback((password: string) => {
     if (password === "") {
       setError("password", "Please enter a password");
       return;
@@ -88,7 +84,7 @@ const AuthProvider = ({ children }) => {
       return;
     }
     setError("password", "");
-  }, [password]);
+  }, []);
 
   const handleLogin = async (
     e:
@@ -98,8 +94,8 @@ const AuthProvider = ({ children }) => {
     password: string
   ) => {
     e.preventDefault();
-    checkEmailValidity();
-    checkPasswordValidity();
+    checkEmailValidity(email);
+    checkPasswordValidity(password);
     try {
       const { data: userData } = await loginMutation({
         variables: { input: { email, password } },
@@ -109,10 +105,10 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem("token", token);
         setLoginSuccessful(true);
       } else {
-        setError("Login", "Something went wrong. Please try again.");
+        setError("login", "Something went wrong. Please try again.");
       }
     } catch (userLoginError) {
-      setError("Login", "Incorrect Email or password.");
+      setError("login", "Incorrect Email or password.");
     }
   };
 

@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FormContainer,
-  Input,
-  LoginButton,
-  ValidationErrorText,
-} from "./LoginFormStyles";
+import { FormContainer, Input, LoginButton } from "./LoginFormStyles";
 import { useAuth } from "../utils/useAuth";
+import ValidationError from "./ValidationError";
+import InputField from "./InputField";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
@@ -21,53 +18,43 @@ const LoginForm = () => {
   } = useAuth();
 
   const navigate = useNavigate();
-  if (loginSuccessful) navigate("/overview");
+  useEffect(() => {
+    if (loginSuccessful) navigate("/overview");
+  }, [loginSuccessful, navigate]);
   // const debouncedEmail = useDebounce(email, 200);
   // const debouncedPassword = useDebounce(password, 200);
 
   return (
     <FormContainer>
       <form onSubmit={(e) => handleLogin(e, email, password)} noValidate>
-        <div>
-          <Input
-            id={"email"}
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            required
-            placeholder="Enter your email"
-          />
-          <label htmlFor={"email"}>
-            {" "}
-            {emailError !== undefined ? (
-              <ValidationErrorText>{emailError}</ValidationErrorText>
-            ) : null}
-          </label>
-        </div>
+        <InputField
+          id={"email"}
+          type={"email"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Please enter your email"
+          testId="emailInput"
+          error={emailError}
+        />
         <br />
-        <Input
+        <InputField
           id={"password"}
           type="password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          required
           placeholder="Enter your password"
+          testId="passwordInput"
+          error={passwordError}
         />
-        <label htmlFor={"password"}>
-          {" "}
-          {passwordError ? (
-            <ValidationErrorText>{passwordError}</ValidationErrorText>
-          ) : null}
-        </label>
         <br />
         {loading && <p>Loading...</p>}
-        <LoginButton type="submit">Login</LoginButton>
+        <LoginButton type="submit" id="login">
+          Login
+        </LoginButton>
         {loginError ? (
-          <ValidationErrorText>{loginError}</ValidationErrorText>
+          <ValidationError error={loginError} type={"login"} />
         ) : null}
       </form>
     </FormContainer>
