@@ -1,0 +1,17 @@
+{
+  "data": {
+    "Viewer": {
+      "Auth": {
+        "currentUser": {
+          "user": {
+            "name": "Redakteur Staging",
+            "__typename": "User"
+          },
+          "__typename": "CurrentUser"
+        },
+        "__typename": "AuthViewerSchema"
+      },
+      "__typename": "ViewerQueryType"
+    }
+  }
+}

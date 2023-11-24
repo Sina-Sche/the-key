@@ -24,7 +24,7 @@ describe("Login Page", () => {
 
   it("should login successfully with valid credentials", () => {
     const validEmail = Cypress.env("USER_EMAIL");
-    const validPassword = Cypress.env("USER_PASSWORD  ");
+    const validPassword = Cypress.env("USER_PASSWORD");
 
     cy.get("[data-testid=emailInput]").type(validEmail);
     cy.get("[data-testid=passwordInput]").type(validPassword);

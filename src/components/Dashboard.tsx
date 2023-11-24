@@ -14,7 +14,6 @@ const Dashboard = () => {
     },
   });
 
-  // TODO - add loading skeleton
   if (loading) return <p>Loading...</p>;
   if (error) return <AuthError />;
 
