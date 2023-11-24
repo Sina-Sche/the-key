@@ -6,10 +6,12 @@ import {
 } from "../graphql/getContentNodes";
 import placeholderImage from "../assets/placeholder.png";
 import { Img, List, ListElement, Title } from "./ContentNodesListStyles";
-import { User } from "../types";
 import { v4 as uuidv4 } from "uuid";
+import { LoadingOverlay, LoadingSpinner } from "./LoadingOverlay";
+import { LogoutButton } from "./Logout";
 
-const ContentNodesList: React.FC<User> = ({ token }) => {
+const ContentNodesList: React.FC = () => {
+  const token = localStorage.getItem("token");
   const { loading, error, data } = useQuery<ContentNodesResponse>(
     GET_CONTENT_NODES,
     {
@@ -20,7 +22,13 @@ const ContentNodesList: React.FC<User> = ({ token }) => {
       },
     }
   );
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <LoadingOverlay data-testid="loadingOverlay">
+        <LoadingSpinner />
+      </LoadingOverlay>
+    );
+  }
   if (error) {
     console.error(error);
   }
@@ -28,18 +36,21 @@ const ContentNodesList: React.FC<User> = ({ token }) => {
     data?.Admin.Tree.GetContentNodes.edges.map((edge: any) => edge.node);
 
   return (
-    <List>
-      {nodes?.map((node: any) => (
-        <ListElement key={uuidv4()}>
-          <Title>{node.structureDefinition.title}</Title>
-          {node.image ? (
-            <Img src={node.image.url} alt="lesson" loading="lazy" />
-          ) : (
-            <Img src={placeholderImage} alt="lesson" loading="lazy" />
-          )}
-        </ListElement>
-      ))}
-    </List>
+    <>
+      <List>
+        {nodes?.map((node: any) => (
+          <ListElement key={uuidv4()}>
+            <Title>{node.structureDefinition.title}</Title>
+            {node.image ? (
+              <Img src={node.image.url} alt="lesson" loading="lazy" />
+            ) : (
+              <Img src={placeholderImage} alt="lesson" loading="lazy" />
+            )}
+          </ListElement>
+        ))}
+      </List>
+      <LogoutButton />
+    </>
   );
 };
 

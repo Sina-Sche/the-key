@@ -5,6 +5,7 @@ import { GET_CONTENT_NODES } from "../graphql/getContentNodes";
 import ContentNodesList from "./ContentNodesList";
 import { ThemeProvider } from "styled-components";
 import theme from "../theme";
+import { MemoryRouter } from "react-router-dom";
 
 jest.mock("../types", () => ({
   User: jest.fn(),
@@ -50,14 +51,16 @@ const mocks = [
 describe("ContentNodesList", () => {
   it("renders loading state, then content nodes", async () => {
     render(
-      <ThemeProvider theme={theme}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <ContentNodesList token="mockToken" />
-        </MockedProvider>
-      </ThemeProvider>
+      <MemoryRouter>
+        <ThemeProvider theme={theme}>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <ContentNodesList />
+          </MockedProvider>
+        </ThemeProvider>
+      </MemoryRouter>
     );
 
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(screen.getByTestId("loadingOverlay")).toBeInTheDocument();
 
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0)); // Wait for next tick
@@ -78,11 +81,13 @@ describe("ContentNodesList", () => {
     ];
     const spy = jest.spyOn(console, "error").mockImplementation(() => {});
     render(
-      <ThemeProvider theme={theme}>
-        <MockedProvider mocks={errorMock} addTypename={false}>
-          <ContentNodesList token="mockToken" />
-        </MockedProvider>
-      </ThemeProvider>
+      <MemoryRouter>
+        <ThemeProvider theme={theme}>
+          <MockedProvider mocks={errorMock} addTypename={false}>
+            <ContentNodesList />
+          </MockedProvider>
+        </ThemeProvider>
+      </MemoryRouter>
     );
 
     await act(async () => {

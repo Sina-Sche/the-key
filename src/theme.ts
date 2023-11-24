@@ -19,6 +19,7 @@ export interface Theme {
     fontFamily: string;
   };
   spacing: {
+    xsmall: string;
     small: string;
     medium: string;
     large: string;
@@ -52,6 +53,7 @@ const theme: Theme = {
     fontFamily: "Verdana",
   },
   spacing: {
+    xsmall: "5px",
     small: "10px",
     medium: "15px",
     large: "20px",
