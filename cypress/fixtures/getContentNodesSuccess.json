@@ -1,0 +1,124 @@
+{
+  "Admin": {
+    "__typename": "AdminQueryType",
+    "Tree": {
+      "__typename": "TreeAdminSchema",
+      "GetContentNodes": {
+        "__typename": "TreeNodesConnection",
+        "edges": [
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6cmVndWxhci1zdGFnaW5nLWNvdXJzZS1lLWxlYXJuaW5nLWNvbnRlbnQtMC1pZA==",
+              "image": {
+                "__typename": "File",
+                "thumbnail": "https://appdata-thekey-academy-lms-staging.s3.eu-central-1.amazonaws.com/%24%26%24SYSTEM%24%26%24/FileDescription%3A7fa6ba47-a681-4d20-8c1b-246ab160b49b/staging-image-0-thumbnail.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231124T075648Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIAUGWLQU7AKANYRA53%2F20231124%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=383aa2ff54a3e5f6eb2cc8e9ed4ba3d71f69e907470df55e9fe29c29e4a88633",
+                "name": "staging-image-0",
+                "url": "https://appdata-thekey-academy-lms-staging.s3.eu-central-1.amazonaws.com/%24%26%24SYSTEM%24%26%24/FileDescription%3A7fa6ba47-a681-4d20-8c1b-246ab160b49b/staging-image-0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231124T075648Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIAUGWLQU7AKANYRA53%2F20231124%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=9d9c770a7e4922d39a5e70582abe194d705aa7bdc26ae35de28a920b402cfc94"
+              },
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Lektion 1.1  "
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6cmVndWxhci1zdGFnaW5nLWNvdXJzZS1lLWxlYXJuaW5nLWNvbnRlbnQtMS1pZA==",
+              "image": {
+                "__typename": "File",
+                "thumbnail": "https://appdata-thekey-academy-lms-staging.s3.eu-central-1.amazonaws.com/%24%26%24SYSTEM%24%26%24/FileDescription%3A7fa6ba47-a681-4d20-8c1b-246ab160b49b/staging-image-0-thumbnail.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231124T075648Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIAUGWLQU7AKANYRA53%2F20231124%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=383aa2ff54a3e5f6eb2cc8e9ed4ba3d71f69e907470df55e9fe29c29e4a88633",
+                "name": "staging-image-0",
+                "url": "https://appdata-thekey-academy-lms-staging.s3.eu-central-1.amazonaws.com/%24%26%24SYSTEM%24%26%24/FileDescription%3A7fa6ba47-a681-4d20-8c1b-246ab160b49b/staging-image-0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231124T075648Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIAUGWLQU7AKANYRA53%2F20231124%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=9d9c770a7e4922d39a5e70582abe194d705aa7bdc26ae35de28a920b402cfc94"
+              },
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Lektion 1.2"
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6cmVndWxhci1zdGFnaW5nLWNvdXJzZS1hc3luYy1jb250ZW50LTAtaWQ=",
+              "image": {
+                "__typename": "File",
+                "thumbnail": "https://appdata-thekey-academy-lms-staging.s3.eu-central-1.amazonaws.com/%24%26%24SYSTEM%24%26%24/FileDescription%3A7fa6ba47-a681-4d20-8c1b-246ab160b49b/staging-image-0-thumbnail.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231124T075648Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Credential=AKIAUGWLQU7AKANYRA53%2F20231124%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=2a6ac2be1873e9c9dc482a786fbae03d782e2a7e53d194cba650d9295f000cfe",
+                "name": "staging-image-0",
+                "url": "https://appdata-thekey-academy-lms-staging.s3.eu-central-1.amazonaws.com/%24%26%24SYSTEM%24%26%24/FileDescription%3A7fa6ba47-a681-4d20-8c1b-246ab160b49b/staging-image-0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231124T075648Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=AKIAUGWLQU7AKANYRA53%2F20231124%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=9d9c770a7e4922d39a5e70582abe194d705aa7bdc26ae35de28a920b402cfc94"
+              },
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Lektion 2.1"
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6Tm9kZTpiMTA4ZjY4YS0zY2FiLTQ1OWQtYmJjNC1iNDY4OTEwYzk5ZmE=",
+              "image": null,
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Modul 1"
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6Tm9kZTpmMmYwYzM3NC1lNWJlLTRmY2EtYTU1Yy00OWQ4Y2FlNWNiZjg=",
+              "image": null,
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Neues E-Learning-Modul"
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6Tm9kZTpmOTI4Yzg2MC1jOGRiLTQxZmQtYjRmZi1lYTgyYWYxYTZmNDg=",
+              "image": null,
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Neues E-Learning-Modul"
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6Tm9kZTpzdGFuZGFsb25lLXZvY2FiLWNvbnRlbnQ=",
+              "image": null,
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Vokabeltrainer"
+              }
+            }
+          },
+          {
+            "__typename": "TreeNodesEdge",
+            "node": {
+              "__typename": "TreeNode",
+              "id": "VHJlZU5vZGU6Tm9kZTpzdGFuZGFsb25lLXZvY2FiLWNvbnRlbnQ=",
+              "image": null,
+              "structureDefinition": {
+                "__typename": "ChildStructureDefinition",
+                "title": "Vokabeltrainer"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

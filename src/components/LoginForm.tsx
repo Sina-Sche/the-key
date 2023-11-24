@@ -22,8 +22,6 @@ const LoginForm = () => {
   useEffect(() => {
     if (loginSuccessful) navigate("/overview");
   }, [loginSuccessful, navigate]);
-  // const debouncedEmail = useDebounce(email, 200);
-  // const debouncedPassword = useDebounce(password, 200);
 
   return (
     <FormContainer>

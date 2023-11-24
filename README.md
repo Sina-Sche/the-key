@@ -32,5 +32,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### How to use
 
 - clone the project
+- add a .env file (see .env.template)
 - start the development server with `npm start`
 - login with the credentials that have been sent via email
+- for running cypress tests, add cypress.env.json (see cypress.template.env.json)

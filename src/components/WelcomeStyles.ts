@@ -8,6 +8,7 @@ export const LoginContainer = styled.div`
 `;
 
 export const Img = styled.img`
+  margin-top: 15px;
   max-width: 90%;
 `;
 

@@ -9,6 +9,7 @@ import { Img, List, ListElement, Title } from "./ContentNodesListStyles";
 import { v4 as uuidv4 } from "uuid";
 import { LoadingOverlay, LoadingSpinner } from "./LoadingOverlay";
 import { LogoutButton } from "./Logout";
+import LazyImage from "./LazyImage";
 
 const ContentNodesList: React.FC = () => {
   const token = localStorage.getItem("token");
@@ -42,10 +43,19 @@ const ContentNodesList: React.FC = () => {
           <ListElement key={uuidv4()}>
             <Title>{node.structureDefinition.title}</Title>
             {node.image ? (
-              <Img src={node.image.url} alt="lesson" loading="lazy" />
+              <LazyImage src={node.image.url} alt="lesson" />
             ) : (
-              <Img src={placeholderImage} alt="lesson" loading="lazy" />
+              <LazyImage src={placeholderImage} alt="lesson" />
             )}
+          </ListElement>
+        ))}
+        {nodes?.map((node: any, index) => (
+          <ListElement key={uuidv4()}>
+            <Title>{node.structureDefinition.title}</Title>
+            <LazyImage
+              src={`https://picsum.photos/id/${index + 1}/180/97`}
+              alt="lesson"
+            />
           </ListElement>
         ))}
       </List>

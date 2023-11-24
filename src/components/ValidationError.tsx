@@ -7,7 +7,9 @@ interface ErrorProps {
 const ValidationError: React.FC<ErrorProps> = ({ error, type }: ErrorProps) => {
   return (
     <label htmlFor={type}>
-      <ValidationErrorText>{error}</ValidationErrorText>
+      <ValidationErrorText data-testId={"loginError"}>
+        {error}
+      </ValidationErrorText>
     </label>
   );
 };
